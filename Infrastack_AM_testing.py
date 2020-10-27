@@ -11,9 +11,9 @@ from selenium.webdriver.common.keys import Keys
 import time
 import datetime
 
-driver = webdriver.Chrome(executable_path=r'C:/Users/user/Downloads/er/chromedriver.exe')
+driver = webdriver.Chrome(executable_path=r'ADD PATH OF CHROMEDRIVER')
 driver.maximize_window()
-driver.get("https://www.infrastack-labs.com/")
+driver.get("https://www.WEBSITE.com/")
 main_page = driver.current_window_handle
 
 #Home
@@ -139,10 +139,10 @@ driver.close()
 date = datetime.datetime.now()
 
 # Email Notification
-emailfrom = "InfraStack-Labs Support <InfraStack-Labs Support>"
-recipients = ['perinbaraj.t@infrastack-labs.com']
-username = "support@infrastack-labs.in"
-password = "Oracle#1234"
+emailfrom = ""
+recipients = ['']
+username = ""
+password = ""
 html="""<table cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout:fixed;font-size:10pt;font-family:Arial;width:0px;border-collapse:collapse;border:none">
 <colgroup><col width="58"><col width="520"><col width="69"></colgroup>
 <tbody>
@@ -223,11 +223,11 @@ msg = MIMEMultipart()
 msg["From"] = emailfrom
 msg["To"] = ", ".join(recipients[:-1])
 msg["cc"] = recipients[-1]
-msg["Subject"] = "Testing Automation infrastack - """+ date.strftime("%x") +""
+msg["Subject"] = "Testing Automation - """+ date.strftime("%x") +""
 part2 = MIMEText(html, 'html')
 msg.attach(part2)
 server = smtplib.SMTP("smtp.gmail.com:587")
 server.starttls()
-server.login('support@infrastack-labs.in','Oracle#1234')
+server.login('username','password')
 server.sendmail(emailfrom, recipients, msg.as_string())
 server.quit()
