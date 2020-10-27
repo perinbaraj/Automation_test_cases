@@ -13,9 +13,9 @@ import time
 import datetime
 
 
-driver = webdriver.Chrome(executable_path=r"C:/Users/user/Downloads/er/chromedriver.exe")
+driver = webdriver.Chrome(executable_path=r"ADD PATH")
 driver.maximize_window()
-driver.get("https://omeghacloud.com/")
+driver.get("https://WEBSITE.com/")
 time.sleep(10)
 elem = driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div/p[3]/a')
 time.sleep(10)
@@ -593,10 +593,10 @@ date = datetime.datetime.now()
 
 # Email Notification
 # Email Notification
-emailfrom = "InfraStack-Labs Support <InfraStack-Labs Support>"
-recipients = ['cloudteam@infrastack-labs.in','management@infrastack-labs.in']
-username = "support@infrastack-labs.in"
-password = "Oracle#1234"
+emailfrom = ""
+recipients = ['','']
+username = ""
+password = ""
 
 html="""<table cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout:fixed;font-size:10pt;font-family:Arial;width:0px;border-collapse:collapse;border:none">
 <colgroup><col width="48"><col width="58"><col width="124"><col width="520"><col width="69"></colgroup>
@@ -785,11 +785,11 @@ msg = MIMEMultipart()
 msg["From"] = emailfrom
 msg["To"] = ", ".join(recipients[:-1])
 msg["cc"] = recipients[-1]
-msg["Subject"] = "Omegha Testing Automation - Status - """+ date.strftime("%x") +""
+msg["Subject"] = "Testing Automation - """+ date.strftime("%x") +""
 part2 = MIMEText(html, 'html')
 msg.attach(part2)
 server = smtplib.SMTP("smtp.gmail.com:587")
 server.starttls()
-server.login('support@infrastack-labs.in','Oracle#1234')
+server.login('Username','Password')
 server.sendmail(emailfrom, recipients, msg.as_string())
 server.quit()
